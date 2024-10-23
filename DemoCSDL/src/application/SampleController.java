@@ -20,7 +20,7 @@ public class SampleController
 	public void dangnhap_clicked()
 	{
 		
-		Dangnhap_caitien1(txtUser.getText(), txtPassword.getText());
+		Dangnhap_caitien2(txtUser.getText(), txtPassword.getText());
 				
 		
 	}
@@ -81,6 +81,41 @@ public class SampleController
 			else
 			{
 				lblInfo.setText("Đăng nhập không thành công");
+			}		
+			
+		}
+		
+		catch(Exception ex)
+		{
+			lblInfo.setText("Lỗi đăng nhập:"+ex.getMessage());
+			//txtUser.setText("Lỗi đăng nhập:"+ex.getMessage());
+		}
+		
+		
+	}
+	
+	public void Dangnhap_caitien2(String username, String password)
+	{
+		try {
+			Connection conn=DataConnection.getConnection();
+			
+			String query = "SELECT id, username FROM	tbl_User "
+					+ "where username=? and password=?";
+			
+			txtTest.setText(query);
+			
+			PreparedStatement pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, username);
+			pstmt.setString(2, password);
+			
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) 
+			{
+				lblInfo.setText(rs.getString("username")+ " đã đăng nhập");
+			}
+			else
+			{
+				lblInfo.setText("Đăng nhập không thành công");
 			}
 			
 			
@@ -89,7 +124,7 @@ public class SampleController
 		catch(Exception ex)
 		{
 			lblInfo.setText("Lỗi đăng nhập:"+ex.getMessage());
-			//txtUser.setText("Lỗi đăng nhập:"+ex.getMessage());
+			txtUser.setText("Lỗi đăng nhập:"+ex.getMessage());
 		}
 		
 		
