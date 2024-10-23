@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+   <center>
+      <VBox onMouseClicked="#loadProducts" prefHeight="408.0" prefWidth="716.0" BorderPane.alignment="CENTER">
+         <children>
+            <TableView id="tableView" fx:id="tableView" onMouseClicked="#loadProducts" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn id="columnProductId" fx:id="columnProductId" prefWidth="133.59998166561127" text="Product ID" />
+                <TableColumn id="columnProductName" fx:id="columnProductName" prefWidth="411.1999816894531" text="Product Name" />
+                  <TableColumn id="columnPrice" fx:id="columnPrice" prefWidth="164.0" text="Price" />
+              </columns>
+            </TableView>
+         </children>
+      </VBox>
+   </center>
+</BorderPane>
