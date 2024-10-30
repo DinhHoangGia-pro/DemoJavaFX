@@ -122,6 +122,10 @@ public class SampleController
 		txtProductName.setEditable(dk);
 		txtQuantityPerUnit.setEditable(dk);
 		txtUnitPrice.setEditable(dk);
+		btnAdd.setDisable(false);
+		btnEdit.setDisable(false);
+		btnDel.setDisable(false);
+		
 	}
 	//-----------------------------------
 	@FXML
@@ -134,6 +138,9 @@ public class SampleController
 		txtQuantityPerUnit.setText("");
 		txtUnitPrice.setText("");
 		event="INSERT";
+		
+		btnEdit.setDisable(true);
+		btnDel.setDisable(true);
 		
 	}
 	
@@ -159,8 +166,15 @@ public class SampleController
 	@FXML
 	public void updateProduct_event()
 	{
+		if (txtProductID.getText()=="")
+		{
+			Thongbao("Bạn chưa chọn bản ghi để sửa");
+			return;
+		}
 		setEnable(true);		
 		event="UPDATE";
+		btnAdd.setDisable(true);
+		btnDel.setDisable(true);
 		
 	}
 	//----------------------------------------------
@@ -185,6 +199,11 @@ public class SampleController
 	
 	public void deleteProduct_event()
 	{
+		if (txtProductID.getText()=="")
+		{
+			Thongbao("Bạn chưa chọn bản ghi để xóa");
+			return;
+		}
 		if (Question("Bạn có chắc chắn xóa")==true)
 			deleteProduct();
 	}
